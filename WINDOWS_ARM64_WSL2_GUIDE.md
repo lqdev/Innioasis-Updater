@@ -88,7 +88,8 @@ Then reopen Ubuntu.
 ### A. Prepare the Y1 for Bootrom Mode
 
 1. **Power off** your Y1 completely
-2. **Do NOT connect USB yet**
+2. **Use a paperclip** to press the reset button on the bottom of the Y1 (between the headphone jack and charging port) until you hear a **CLICK**
+3. **Do NOT connect USB yet**
 
 ### B. Share the USB Device with WSL2
 
@@ -125,16 +126,17 @@ Now the STATE should show "Shared".
 wsl
 ```
 
-2. **While holding VOL DOWN + POWER**, connect the USB cable to your Y1
-3. Wait 2-3 seconds, then release the buttons
+2. **Simply connect the USB cable** to your powered-off Y1
+   - No buttons to hold - the reset button click already put it in the right mode
+   - If that doesn't work, try: While connecting USB, use paperclip to press reset button again
 
-4. In another PowerShell window as Administrator:
+3. In another PowerShell window as Administrator:
 ```powershell
 # Attach the device to WSL2
 usbipd attach --wsl --busid 1-4
 ```
 
-5. Verify in your WSL2 Ubuntu terminal:
+4. Verify in your WSL2 Ubuntu terminal:
 ```bash
 lsusb
 ```
@@ -205,9 +207,11 @@ Then reopen Ubuntu and try again.
 
 ### Y1 won't enter bootrom mode
 
-- Try **VOL UP + POWER** instead of VOL DOWN + POWER
+- Make sure you pressed the **reset button with a paperclip** until you heard a CLICK
+- The reset button is on the **bottom** between headphone jack and USB-C port
+- Try pressing reset button **while connecting USB** if just powering off doesn't work
 - Make sure device is completely powered off first
-- Some Y1s require holding buttons for 5+ seconds after connecting USB
+- On Windows, sometimes just powering off is enough (app handles it automatically)
 
 ## After First Firmware Install
 
