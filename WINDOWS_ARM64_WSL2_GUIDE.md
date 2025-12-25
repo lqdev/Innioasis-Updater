@@ -56,15 +56,28 @@ In your Ubuntu WSL2 terminal:
 
 ```bash
 # Install dependencies
-sudo apt install -y python3 git libusb-1.0-0 python3-pip libfuse2 libssl-dev build-essential cmake
+sudo apt install -y python3 git libusb-1.0-0 libfuse2 libssl-dev build-essential cmake
+
+# Install uv (fast Python package manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
 
 # Clone the repository
 git clone https://github.com/ryan-specter/Innioasis-Updater.git
 cd Innioasis-Updater
 
-# Install Python dependencies
-pip3 install -r requirements.txt
-pip3 install .
+# Create a virtual environment with uv
+uv venv
+
+# Activate the virtual environment
+source .venv/bin/activate
+
+# Install dependencies (excluding keystone-engine which has ARM64 issues)
+# Note: keystone-engine is optional for MTKClient and not needed for Y1 firmware flashing
+uv pip install wheel setuptools pyusb pycryptodome pycryptodomex colorama shiboken6 pyside6 mock pyserial flake8 pillow numpy capstone unicorn requests
+
+# Install the package itself
+uv pip install -e .
 
 # Set up USB rules
 sudo usermod -a -G plugdev $USER
