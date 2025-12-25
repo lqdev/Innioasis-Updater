@@ -56,7 +56,7 @@ In your Ubuntu WSL2 terminal:
 
 ```bash
 # Install dependencies
-sudo apt install -y python3 git libusb-1.0-0 python3-pip libfuse2 libssl-dev build-essential
+sudo apt install -y python3 git libusb-1.0-0 python3-pip libfuse2 libssl-dev build-essential cmake
 
 # Clone the repository
 git clone https://github.com/ryan-specter/Innioasis-Updater.git
