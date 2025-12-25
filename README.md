@@ -40,6 +40,14 @@ Innioasis Updater is an easy, one-click firmware installer for the Innioasis Y1 
 - Chaosmaster
 - Geert-Jan Kreileman (MTKclient GUI, design & fixes)
 
+## Installing on Windows ARM64
+
+**Windows on ARM devices cannot run the x86/x64 binaries required for SP Flash Tool.** However, you can use Innioasis Updater via WSL2 (Windows Subsystem for Linux) to perform full firmware installations using the MTKClient backend.
+
+👉 **[See the complete Windows ARM64 WSL2 setup guide](WINDOWS_ARM64_WSL2_GUIDE.md)**
+
+**Note:** After your first firmware installation, Fast Update (firmware upgrades) works natively on Windows ARM64 via ADB - no WSL2 needed!
+
 ## Installing on Linux (Not officially supported - you're on you're own)
 
 - Install script (beta):
